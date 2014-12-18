@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Konami Code</title>
+  <script src="/bower_components/konami-code-event/src/konami-code.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class='instructions'>
+    <span>
+      Type this sequence <br /><code class='shadow'>⬆ ⬆ ⬇ ⬇ ⬅ ➡ ⬅ ➡ B A</code>
+      <br /> to trigger the event and change background color.
+    </span>
+  </div>
+<script>
+  (function() {
+    document.addEventListener('konamiCode', function () {
+      var color = [
+        Math.round(Math.random() * 255)
+      , Math.round(Math.random() * 255)
+      , Math.round(Math.random() * 255)
+      ].join(',')
+
+      document.body.style.backgroundColor  = 'rgb(' + color + ')'
+    })
+  })();
+</script>
+</body>
+</html>

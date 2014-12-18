@@ -1,0 +1,16 @@
+{
+  "name": "event-konami-code",
+  "version": "0.0.0",
+  "authors": [
+    "mateus ortiz <mateus.prado@ig.com.br>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
