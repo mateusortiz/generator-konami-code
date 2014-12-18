@@ -2,61 +2,25 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var path  = require('path');
 
-module.exports = yeoman.generators.Base.extend({
-  initializing: function () {
-    this.pkg = require('../package.json');
-  },
 
-  prompting: function () {
-    var done = this.async();
+var GeneratorKonamiCode = module.exports = function() {
+  var prompts = [];
+  var files   = this.expandFiles('**/*', { cwd: this.sourceRoot(), dot: true });
+    var ignores = [];
 
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the groovy' + chalk.red('KonamiCode') + ' generator!'
-    ));
+  this.package = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 
-    var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
+  this.log.writeln('Generating from ' + chalk.cyan('Konami Code Event') + ' v' + chalk.cyan(this.package.version) + '...');
 
-    this.prompt(prompts, function (props) {
-      this.someOption = props.someOption;
-
-      done();
-    }.bind(this));
-  },
-
-  writing: {
-    app: function () {
-      this.fs.copy(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json')
-      );
-      this.fs.copy(
-        this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
-      );
-    },
-
-    projectfiles: function () {
-      this.fs.copy(
-        this.templatePath('editorconfig'),
-        this.destinationPath('.editorconfig')
-      );
-      this.fs.copy(
-        this.templatePath('jshintrc'),
-        this.destinationPath('.jshintrc')
-      );
+  files.forEach(function(file) {
+    if (ignores.indexOf(file) !== -1) {
+      return;
     }
-  },
 
-  install: function () {
-    this.installDependencies({
-      skipInstall: this.options['skip-install']
-    });
-  }
-});
+    this.copy(file, file);
+  }, this);
+};
+
+GeneratorKonamiCode.name = "Konami Code Event";

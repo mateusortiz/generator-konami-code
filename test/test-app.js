@@ -19,9 +19,9 @@ describe('konami-code:app', function () {
   it('creates files', function () {
     assert.file([
       'bower.json',
-      'package.json',
-      '.editorconfig',
-      '.jshintrc'
+      'index.html',
+      'style.css',
+      'bower_components/'
     ]);
   });
 });
