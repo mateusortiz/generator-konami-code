@@ -1,7 +1,7 @@
 {
   "name": "generator-konami-code",
   "version": "0.0.0",
-  "description": "Yeoman generator",
+  "description": "Yeoman generator konami code event",
   "license": "MIT",
   "main": "app/index.js",
   "repository": "mateusortiz/generator-konami-code",
