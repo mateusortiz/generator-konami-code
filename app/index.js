@@ -1,4 +1,5 @@
 'use strict';
+
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
@@ -8,7 +9,7 @@ var path  = require('path');
 var GeneratorKonamiCode = module.exports = function() {
   var prompts = [];
   var files   = this.expandFiles('**/*', { cwd: this.sourceRoot(), dot: true });
-    var ignores = [];
+  var ignores = [];
 
   this.package = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 
